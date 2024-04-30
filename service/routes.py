@@ -73,10 +73,9 @@ def create_counters(name):
 def read_counters(name):
     """Reads a single counter"""
     app.logger.info("Request to Read counter: %s...", name)
-    status_code = status.HTTP_404_NOT_FOUND
 
     if name not in COUNTER:
-        return abort(status_code, f"Counter {name} does not exist")
+        return abort(status.HTTP_404_NOT_FOUND, f"Counter {name} does not exist")
 
     counter = COUNTER[name]
     return jsonify(name=name, counter=counter)
@@ -89,10 +88,9 @@ def read_counters(name):
 def update_counters(name):
     """Updates a counter"""
     app.logger.info("Request to Update counter: %s...", name)
-    status_code = status.HTTP_404_NOT_FOUND
 
     if name not in COUNTER:
-        return abort(status_code, f"Counter {name} does not exist")
+        return abort(status.HTTP_404_NOT_FOUND, f"Counter {name} does not exist")
 
     COUNTER[name] += 1
 
